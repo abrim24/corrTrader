@@ -1,0 +1,26 @@
+from threading import Thread
+
+class agentThread(threading.Thread):
+    def __init__(self):
+        self.val=0
+
+    def multiplyby5(i):
+        self.val=i*5
+
+def main():
+
+    threads =[]
+    for i in range(10):
+        threads.append(Thread(target=doSomething(i)))
+        threads[i].start()
+        threads[i].join()
+
+
+
+    print "threads: ", threads
+
+def doSomething(i):
+    print "thread: ", i
+    return i
+
+if __name__ == "__main__": main()

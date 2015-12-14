@@ -1,0 +1,15 @@
+from multiprocessing import Pool as agentPool
+import itertools as i
+
+def main():
+    pool = agentPool(7)
+    print(pool.map(tstar,i.izip([5,10,15],i.repeat(5),i.repeat('test2'),i.repeat(['a','b']))))
+
+def tstar(a):
+    return times5(*a)
+
+def times5(i, test, test2, test3):
+    print "test, test2, test3:", test, test2, test3
+    return 5*i
+
+if __name__ == "__main__": main()
